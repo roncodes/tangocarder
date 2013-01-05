@@ -41,7 +41,7 @@ var tango_carder = {
 		$('.span7').fadeOut();
 		$('#end').fadeIn();
 		setTimeout(function() { $('#end').parent().toggleClass('span5 span12'); }, 500);
-		$('#end').html('<h3>You are about to send ' + number_of_cards + ' Tango Cards each at the value of $' + card_values + ' to the specified recipents</h3><p>'+$('.recipents-input').val()+'</p>');
+		$('#end').html('<h3>You are about to send ' + number_of_cards + ' Tango Cards each at the value of $' + Math.floor(card_values) + ' to the specified recipents</h3><p>'+$('.recipents-input').val()+'</p>');
 		$('#finish').fadeIn();
 	},
 	

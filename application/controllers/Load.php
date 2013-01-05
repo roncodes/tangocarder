@@ -15,16 +15,12 @@ class Load {
 		if($return_html == false) {
 			include(APP_DIR . '/views/' . $view . '.php');
 		} else {
-			return file_get_contents(APP_DIR . '/views/' . $view . '.php');
+			ob_start();
+			include APP_DIR . '/views/' . $view . '.php';
+			$template = ob_get_contents();
+			ob_end_clean();
+			return $template;
 		}
 	}
-	
-	/* 
-	 * Load from the library directory
-	 */
-	// public function library($name = NULL)
-	// {
-		// include(APP_DIR . '/library/' . $name . '.php');
-	// }
 	
 }
