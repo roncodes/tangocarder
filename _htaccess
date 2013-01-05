@@ -1,0 +1,6 @@
+Options +FollowSymLinks
+ 
+RewriteEngine On
+RewriteRule ^([a-zA-Z]+)/([a-zA-Z]+)$ index.php?controller=$1&method=$2
+RewriteRule ^([a-zA-Z]+)$ index.php?controller=$1&method=index
+RewriteRule ^(.*)/$ /tangocarder/$1 [L,R=301]
