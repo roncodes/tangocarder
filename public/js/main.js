@@ -5,6 +5,18 @@ var tango_carder = {
 		return re.test(email);
 	},
 	
+	validate_number : function(event) {
+		var key = window.event ? event.keyCode : event.which;
+		if (event.keyCode == 8 || event.keyCode == 46
+		 || event.keyCode == 37 || event.keyCode == 39) {
+			return true;
+		}
+		else if ( key < 48 || key > 57 ) {
+			return false;
+		}
+		else return true;
+	},
+	
 	add_recipent : function(recipent) {
 		if(this.validate_email(recipent)) {
 			$('.recipents').append('<div id="'+recipent.replace('@', '').replace('.', '')+'" style="width:100%;height:20px;background:#C9FFFF;padding:5px;">' + recipent + '<a href="javascript:tango_carder.remove_recipent(&#39;'+recipent.replace('@', '').replace('.', '')+'&#39;, &#39;'+recipent+'&#39;);" class="pull-right" style="margin-right:30px;">remove</a></div>');
@@ -29,6 +41,10 @@ var tango_carder = {
 	},
 	
 	display_cards : function() {
+		if(!$.isNumeric($('#spendingLimit').val())) {
+			this.talert('Spending limit is invalid, must be a number', 'error');
+			return false;
+		}
 		var number_of_cards = 0;
 		var card_values = 0;
 		$('.recipents').children('div').each(function () {
@@ -50,3 +66,7 @@ var tango_carder = {
 	}
 
 }
+
+$(document).ready(function(){
+    $('#spendingLimit').keypress(tango_carder.validate_number());
+});

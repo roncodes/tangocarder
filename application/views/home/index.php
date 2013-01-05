@@ -13,7 +13,7 @@
 				<div class="controls">
 					<div class="input-prepend input-append">
 						<span class="add-on">$</span>
-						<input class="span2" id="spendingLimit" name="spendingLimit" type="text">
+						<input class="span2" id="spendingLimit" name="spendingLimit" type="number">
 						<span class="add-on">.00</span>
 					</div>
 				</div>
